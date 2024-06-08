@@ -1,0 +1,49 @@
+{
+  "name": "@infusedui/toast",
+  "version": "1.4.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infusedui/toast.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "rollup -c --bundleConfigAsCjs && npm publish"
+  },
+  "publishConfig": {
+    "@infusedui:registry": "https://npm.pkg.github.com"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@infusedui/core": "^1.0.5",
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.3.3",
+    "framer-motion": "^11.2.10",
+    "react": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.12.22",
+    "rollup-plugin-scss": "^3.0.0",
+    "sass": "^1.77.4",
+    "scss": "^0.2.4",
+    "simplebar-react": "^3.2.5",
+    "tslib": "^2.6.2",
+    "typed-scss-modules": "^8.0.1",
+    "typescript": "^5.4.5"
+  }
+}
