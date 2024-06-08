@@ -1,0 +1,149 @@
+.infusedui-toast-root {
+  position: fixed;
+  z-index: 2;
+  left: 40px;
+  bottom: 40px;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  row-gap: 4px;
+
+  width: 240px;
+
+  :nth-last-child(n+5) {
+    display: none !important;
+  }
+
+  &.tl,
+  &.tr {
+    top: 40px;
+  }
+
+  &.bl,
+  &.br {
+    bottom: 40px;
+  }
+
+  &.tr,
+  &.br {
+    right: 40px;
+  }
+
+  &.tl,
+  &.bl {
+    left: 40px;
+  }
+
+  &.cl,
+  &.cr {
+    top: 50%;
+    transform: translateZ(-50%);
+  }
+
+  &.ct,
+  &.cb {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.ct {
+    top: 40px;
+  }
+
+  &.cb {
+    bottom: 40px;
+  }
+
+  &.container {
+    display: grid;
+    column-gap: 12px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    align-items: center;
+    align-content: center;
+
+    position: relative;
+
+    box-shadow: 0 4px 32px rgba($color: #191919, $alpha: .1);
+    border: 1px solid rgba($color: #191919, $alpha: .3);
+    background-color: #F4F3EE;
+    border-radius: 8px;
+
+    color: #191919;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    .title {
+      padding: 8px;
+      padding-bottom: 0px;
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &.content {
+    display: grid;
+    column-gap: 12px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    align-items: center;
+    align-content: center;
+
+    position: relative;
+
+    padding: 8px;
+
+    &.icon-left {
+      grid-template-columns: 40px 1fr;
+      grid-template-areas: "icon1 content";
+    }
+
+    &.icon-right {
+      grid-template-columns: 1fr 40px;
+      grid-template-areas: "content icon1";
+    }
+
+    &.icon-both {
+      grid-template-columns: 40px 1fr 40px;
+      grid-template-areas: "icon1 content icon2";
+    }
+
+    .content {
+      grid-area: content;
+    }
+
+
+    .icon {
+      &:first-child {
+        grid-area: icon1;
+      }
+
+      &:last-child {
+        grid-area: icon2;
+      }
+    }
+
+    .infusedui-loader {
+      circle {
+        stroke: #191919;
+      }
+    }
+
+    .container {
+      display: grid;
+      grid-auto-flow: row;
+      row-gap: 4px;
+      grid-area: content;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
