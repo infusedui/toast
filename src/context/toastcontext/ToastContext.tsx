@@ -6,8 +6,8 @@ import {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Toast from "../../components/toast/Toast";
 import { ContextProps } from "./ToastContext.types";
+import Toast from "../../components/toast/Toast";
 
 interface ToastObject {
   content: string;
@@ -30,17 +30,17 @@ const defaultPush: (toast: ToastObject) => ToastObject = (toast: ToastObject) =>
   toast;
 const defaultClear: (toast: ToastObject) => void = (toast: ToastObject) => {};
 
-export const TeauiToastContext = createContext({
+export const ToastContext = createContext({
   pushToastRef: { current: defaultPush },
   clearToastRef: { current: defaultClear },
 });
 
-const TeauiToastProvider: React.FC<ContextProps> = ({ children }) => {
+const ToastProvider: React.FC<ContextProps> = ({ children }) => {
   const pushToastRef = useRef<(toast: ToastObject) => ToastObject>(defaultPush);
   const clearToastRef = useRef(defaultClear);
 
   return (
-    <TeauiToastContext.Provider
+    <ToastContext.Provider
       value={{
         pushToastRef,
         clearToastRef,
@@ -48,12 +48,12 @@ const TeauiToastProvider: React.FC<ContextProps> = ({ children }) => {
     >
       <Toasts />
       {children}
-    </TeauiToastContext.Provider>
+    </ToastContext.Provider>
   );
 };
 
 export const useToasts = () => {
-  const { pushToastRef, clearToastRef } = useContext(TeauiToastContext);
+  const { pushToastRef, clearToastRef } = useContext(ToastContext);
 
   return {
     pushToast: useCallback<(toast: ToastObject) => ToastObject>(
@@ -72,7 +72,7 @@ export const useToasts = () => {
 };
 
 export const Toasts = () => {
-  const { pushToastRef, clearToastRef } = useContext(TeauiToastContext);
+  const { pushToastRef, clearToastRef } = useContext(ToastContext);
   const [toasts, setToasts] = useState<ToastObject[]>([]);
 
   pushToastRef.current = ({ duration, persistent, ...props }) => {
@@ -120,4 +120,4 @@ export const Toasts = () => {
   );
 };
 
-export default TeauiToastProvider;
+export default ToastProvider;
