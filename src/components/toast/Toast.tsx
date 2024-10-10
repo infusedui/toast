@@ -52,8 +52,8 @@ const Toast: React.FC<ToastProps> = ({
           className={`content ${
             format && format.icon
               ? `icon-${format?.icon}`
-              : format
-              ? format
+              : format && format.countdown
+              ? "countdown"
               : ""
           }`}
         >
