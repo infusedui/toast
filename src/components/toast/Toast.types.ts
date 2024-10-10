@@ -8,6 +8,7 @@ export interface ToastProps {
   title?: string;
   format?: {
     icon?: "left" | "right" | "both";
+    countdown?: boolean;
   };
   position?: "tl" | "tr" | "bl" | "br" | "cl" | "cr" | "cb" | "ct";
   icon?: string | string[];
