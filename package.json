@@ -1,10 +1,10 @@
 {
   "name": "@infusedui/toast",
-  "version": "2.3.1",
+  "version": "2.5.0",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "private": false,
   "repository": {
     "type": "git",
@@ -13,36 +13,35 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pub": "rollup -c --bundleConfigAsCjs && npm publish"
+    "pub": "tsup && npm publish",
+    "tsup": "tsup"
   },
   "publishConfig": {
     "@infusedui:registry": "https://npm.pkg.github.com"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@infusedui/core": "^2.5.0",
+    "framer-motion": "^12.16.0",
+    "react": "^19.1.0",
+    "react-router-dom": "^7.6.2",
+    "sass": "^1.89.1",
+    "scss": "^0.2.4"
+  },
   "devDependencies": {
-    "@infusedui/core": "^1.0.5",
-    "@rollup/plugin-commonjs": "^25.0.8",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.6",
+    "@swc/core": "^1.11.31",
     "@types/react": "^18.3.3",
-    "framer-motion": "^11.2.10",
-    "react": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "rollup": "^4.22.4",
-    "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-sass": "^1.12.22",
-    "rollup-plugin-scss": "^3.0.0",
-    "sass": "^1.77.4",
-    "scss": "^0.2.4",
-    "simplebar-react": "^3.2.5",
+    "esbuild-sass-plugin": "^3.3.1",
+    "eslint": "^9.26.0",
+    "lit-element": "^4.2.0",
     "tslib": "^2.6.2",
+    "tsup": "^8.4.0",
     "typed-scss-modules": "^8.0.1",
     "typescript": "^5.4.5"
   }
