@@ -86,11 +86,17 @@ export const Toasts = () => {
     }
 
     const toast = { ...props, id, timer };
-    setToasts((v) => [...v, toast]);
+
+    setToasts((v) => {
+      v.forEach((t) => clearTimeout(t.timer));
+      return [toast];
+    });
+
     return toast;
   };
 
   clearToastRef.current = (toast) => {
+    clearTimeout(toast.timer);
     setToasts((v) => v.filter((t) => t !== toast));
   };
 
