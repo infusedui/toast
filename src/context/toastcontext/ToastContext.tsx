@@ -107,7 +107,7 @@ export const Toasts = () => {
 
   return (
     <div className="infusedui toast-root">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {toasts.map((toast: ToastObject) => (
           <motion.div
             onClick={() => {
