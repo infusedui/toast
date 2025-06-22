@@ -86,11 +86,17 @@ export const Toasts = () => {
     }
 
     const toast = { ...props, id, timer };
-    setToasts((v) => [...v, toast]);
+
+    setToasts((v) => {
+      v.forEach((t) => clearTimeout(t.timer));
+      return [toast];
+    });
+
     return toast;
   };
 
   clearToastRef.current = (toast) => {
+    clearTimeout(toast.timer);
     setToasts((v) => v.filter((t) => t !== toast));
   };
 
@@ -101,7 +107,7 @@ export const Toasts = () => {
 
   return (
     <div className="infusedui toast-root">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {toasts.map((toast: ToastObject) => (
           <motion.div
             onClick={() => {
